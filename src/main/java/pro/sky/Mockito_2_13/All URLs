@@ -1,0 +1,56 @@
+Для EmployeeController:
+@GetMapping("/add")
+    //localhost:8080/employee/add?firstName=Владимир&lastName=Гуляницкий&salary=25000&departmentId=2
+    //localhost:8080/employee/add?firstName=Виктор&lastName=Судоплатов&salary=55500&departmentId=1
+    //localhost:8080/employee/add?firstName=андрей&lastName=Полуянов&salary=44000&departmentId=3
+    //localhost:8080/employee/add?firstName=Олег&lastName=Зудин&salary=24000&departmentId=4
+    public boolean add(@RequestParam String firstName,
+                    @RequestParam String lastName,
+                    @RequestParam double salary,
+                    @RequestParam int departmentId)
+
+@GetMapping("/get")
+    //localhost:8080/employee/get?firstName=Владимир&lastName=Гуляницкий
+    public String get(@RequestParam String firstName, @RequestParam String lastName)
+
+@GetMapping("/remove")
+    //localhost:8080/employee/remove?firstName=Владимир&lastName=Гуляницкий
+    public boolean remove(@RequestParam String firstName, @RequestParam String lastName)
+
+@GetMapping("/all")
+    //localhost:8080/employee/all
+    public Collection<Employee> getAll()
+
+Для DepartmentController:
+
+@GetMapping("{deptId}/salary/sum")
+    //localhost:8080/department/1/salary/sum
+    //localhost:8080/department/2/salary/sum
+    //localhost:8080/department/3/salary/sum
+    //localhost:8080/department/4/salary/sum
+    public double sumByDept(@PathVariable int deptId)
+
+@GetMapping("{deptId}/salary/max")
+    //localhost:8080/department/1/salary/max
+    //localhost:8080/department/2/salary/max
+    //localhost:8080/department/3/salary/max
+    //localhost:8080/department/4/salary/max
+    public double max(@PathVariable int deptId)
+
+@GetMapping("{deptId}/salary/min")
+    //localhost:8080/department/1/salary/min
+    //localhost:8080/department/2/salary/min
+    //localhost:8080/department/3/salary/min
+    //localhost:8080/department/4/salary/min
+    public String min(@PathVariable int deptId)
+
+@GetMapping("{deptId}/employees")
+    //localhost:8080/department/1/employees
+    //localhost:8080/department/2/employees
+    //localhost:8080/department/3/employees
+    //localhost:8080/department/4/employees
+    public List<Employee> find(@PathVariable int deptId)
+
+@GetMapping("/employees")
+    //localhost:8080/department/employees
+    public Map<Integer, List<Employee>> group()
